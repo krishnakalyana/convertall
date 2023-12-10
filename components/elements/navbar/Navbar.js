@@ -10,17 +10,15 @@ import {
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import ModeToggle from "@/components/elements/ThemeToggle";
-import GlobalSearch from "@/components/elements/GlobalSearch";
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
+import GlobalSearch from "@/components/elements/navbar/GlobalSearch";
+import AuthButton from "../AuthButton";
+import { Button } from "../../ui/button";
 const dummyOptions = [
   {
     name: "Home",
@@ -82,16 +80,18 @@ const Navbar = () => {
                 <NavigationMenuTrigger className="h-6">
                   Menu🤘
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="flex flex-col w-[18rem] p-4">
+                <NavigationMenuContent className="flex flex-col w-[12rem] p-4 gap-y-4">
                   {dummyOptions.map((item, index) => {
                     return (
                       <NavigationMenuLink key={index}>
-                        {item.name}
+                        <Button className="h-6 w-full">{item.name}</Button>
                       </NavigationMenuLink>
                     );
                   })}
 
-                  <NavigationMenuLink>Link</NavigationMenuLink>
+                  <NavigationMenuLink>
+                    <AuthButton />
+                  </NavigationMenuLink>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -99,6 +99,9 @@ const Navbar = () => {
         </div>
         <div className="flex justify-center items-center gap-3 pr-4 lg:pr-0  ">
           <GlobalSearch />
+          <div className="hidden sm:flex  ">
+            <AuthButton />
+          </div>
           <ModeToggle />
         </div>
       </Menubar>

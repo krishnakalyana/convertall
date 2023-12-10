@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Login() {
   const router = useRouter();
@@ -47,7 +47,7 @@ function Login() {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col ">
-          <Button className="w-full" onClick={() => router.push("/")}>
+          <Button className="w-full" onClick={() => signIn()}>
             Login
           </Button>
           <p className="p-1">Or</p>
