@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 function Login() {
   const router = useRouter();
@@ -47,13 +48,16 @@ function Login() {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col ">
-          <Button className="w-full" onClick={() => signIn()}>
-            Login
-          </Button>
+          <Button className="w-full">Login</Button>
           <p className="p-1">Or</p>
-          <Button className="w-full">Login via Google</Button>
+          <Button
+            className="w-full"
+            onClick={() => signIn("github", { callbackUrl: "/" })}
+          >
+            <GitHubLogoIcon className="mr-2" /> Login via Github
+          </Button>
 
-          <div className="w-full flex justify-end flex-col pt-2">
+          <div className="w-full flex justify-end flex-col pt-4">
             <p className="font-light text-sm pb-1">{"Don't have a account?"}</p>
 
             <Link href={"/signup"}>Sign up here.</Link>

@@ -10,7 +10,7 @@ const AuthButton = () => {
       <Button
         variant="outline"
         className={btnClasses}
-        onClick={() => signOut()}
+        onClick={() => signOut({ callbackUrl: "/login" })}
       >
         Sign Out
       </Button>
