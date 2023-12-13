@@ -21,6 +21,7 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 const GlobalSearch = () => {
   const [open, setOpen] = React.useState(false);
   const [searchBarVisible, setSearchBarVisible] = React.useState(true);
@@ -40,12 +41,13 @@ const GlobalSearch = () => {
     <>
       {searchBarVisible && (
         <div className="w-full hidden sm:flex">
-          <Input
-            type="email"
-            placeholder="Press ⌘ J to search"
-            className="p-2 m-0 h-7"
+          <Button
+            className="h-7"
+            variant="outline"
             onClick={() => setOpen(true)}
-          />
+          >
+            Press ⌘ J to search
+          </Button>
         </div>
       )}
 

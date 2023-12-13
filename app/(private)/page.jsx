@@ -4,11 +4,21 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import usePagination from "../../hooks/Pagination";
 import { Card } from "@/components/ui/card";
+import axios from "axios";
 const itemList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const { items, numberOfPages } = usePagination(itemList, 9, currentPage);
-
+  useEffect(() => {
+    axios
+      .get("api/user")
+      .then((res) => {
+        console.log("res", res);
+      })
+      .catch((err) => {
+        console.log("Err", err);
+      });
+  }, []);
   return (
     <div className="max-w-screen-xl px-8  w-full py-4 xl:px-0">
       <Card className="h-full flex flex-col p-2">
