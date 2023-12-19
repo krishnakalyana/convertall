@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/elements/navbar/Navbar";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import Loading from "./loading";
+import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -39,7 +41,9 @@ export default async function RootLayout({
           overflow: "auto",
         }}
       >
-        {children}
+        <Suspense fallback={<Loading />}>
+          <Loading />
+        </Suspense>
       </main>
       <footer></footer>
     </div>
